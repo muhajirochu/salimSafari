@@ -137,7 +137,7 @@ export default function TourDetail() {
             <span className="text-2xl font-bold text-coral-500">${tour.price}</span>
             <span className="text-xs text-slate-500"> / person</span>
           </p>
-          <a href={bookingLink} target="_blank" rel="noopener noreferrer" className="btn-whatsapp flex-1 sm:flex-none">
+          <a href={bookingLink} target="_blank" rel="noopener noreferrer" className="btn-whatsapp flex-1 whitespace-nowrap !px-4 sm:flex-none">
             <WhatsAppIcon className="h-5 w-5" /> Book via WhatsApp
           </a>
         </div>

@@ -54,6 +54,7 @@ export default function Navbar() {
     }`;
 
   return (
+    <>
     <header
       className={`sticky top-0 z-40 border-b border-white/60 bg-white/85 backdrop-blur-md transition-shadow ${
         scrolled ? 'shadow-soft' : ''
@@ -112,8 +113,14 @@ export default function Navbar() {
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
+    </header>
 
-      {/* Mobile drawer */}
+      {/*
+       * Mobile drawer — rendered OUTSIDE the <header> on purpose.
+       * The header uses backdrop-blur (backdrop-filter), which makes it the containing
+       * block for `position: fixed` children. Inside the header, the drawer was clipped
+       * to the 64px header box and never became visible on phones.
+       */}
       {open && (
         <div
           id="mobile-menu"
@@ -149,6 +156,6 @@ export default function Navbar() {
           </ul>
         </div>
       )}
-    </header>
+    </>
   );
 }
