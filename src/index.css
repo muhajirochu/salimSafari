@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base styles ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-sand-50 font-sans text-slate-800 antialiased;
+  }
+
+  /* Visible, consistent focus ring for keyboard users */
+  :focus-visible {
+    @apply outline-none ring-2 ring-coral-500 ring-offset-2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------- Reusable component classes ---------- */
+@layer components {
+  /* Centered page container: max 1200px with responsive padding */
+  .container-page {
+    @apply mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 lg:py-24;
+  }
+
+  /* Buttons — all have min 44px height for touch targets */
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3
+      text-base font-semibold transition-all duration-200
+      active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-ocean-600 text-white shadow-soft hover:bg-ocean-700 hover:shadow-lift;
+  }
+
+  .btn-coral {
+    @apply btn bg-coral-500 text-white shadow-soft hover:bg-coral-600 hover:shadow-lift;
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-white shadow-soft hover:bg-whatsapp-dark hover:shadow-lift;
+  }
+
+  .btn-outline-light {
+    @apply btn border-2 border-white/80 text-white backdrop-blur-sm hover:bg-white hover:text-ocean-800;
+  }
+
+  .btn-ghost {
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:border-ocean-600 hover:text-ocean-700;
+  }
+
+  .card {
+    @apply overflow-hidden rounded-xl bg-white shadow-soft transition-all duration-300;
+  }
+
+  /* Form controls */
+  .input {
+    @apply block min-h-[44px] w-full rounded-xl border border-slate-300 bg-white px-4 py-3
+      text-base text-slate-800 placeholder:text-slate-400 transition
+      focus:border-ocean-600 focus:outline-none focus:ring-2 focus:ring-ocean-600/30;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700;
+  }
+}
